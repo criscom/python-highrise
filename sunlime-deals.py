@@ -3,9 +3,10 @@
 
 from pyrise import *
 
+# Who is responsible?
 def dealResponsibleSet:
   dealResponsible = int(input())
-    for dealResponsible in range(1, 3):
+    if dealResponsible in range(1, 3):
       if dealResponsible == 1:
         deal.responsible_party_id = NicoleId
 
@@ -15,8 +16,8 @@ def dealResponsibleSet:
       elif dealResponsible == 3:
         deal.responsible_party_id = ChristophId
 
-    print('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
-        dealResponsibleSet
+    else print('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
+      dealResponsibleSet
 
 
 def dealActionSet(dealAction):
