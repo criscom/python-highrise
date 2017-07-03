@@ -4,6 +4,7 @@
 from pyrise import *
 
 # Set highrise variables
+deal = Deal()
 dealResponsible = 0
 dealId = 0
 dealAction = 0
@@ -17,11 +18,15 @@ dealId = 0
 dealAction = 0
 sunlimeId = 0
 
+# Set user IDs
+christophId = 60274790
+dominikId = 49290195
+nicoleId = 61332931
+
 # What do you wnat to do with your deal? function
 # Set deal action
 def dealActionSet(dealAction):
   if dealAction == 0:
-    deal = Deal()
 
     print('You are now adding a new deal.')
     print('Next, give the deal a name: e.g. Angebot-105340: A good, descriptive Name')
@@ -39,6 +44,8 @@ def dealActionSet(dealAction):
 
     # Set responsible person
     dealResponsibleSet(dealResponsible)
+    print ('2. The highrise ID of Nicole is {}').format(deal.responsible_party_id)
+
 
   elif dealAction == 1:
     print ({dealAction})
@@ -60,13 +67,6 @@ def dealActionSet(dealAction):
 # Who is responsible? function
 # Set responsible person
 def dealResponsibleSet(dealResponsible):
-
-  # Set user IDs
-  christophId = 60274790
-  dominikId = 49290195
-  nicoleId = 61332931
-
-  deal = Deal()
 
   # Whos is responsible?
   dealResponsible = input()
@@ -100,4 +100,3 @@ print ('Blank for quit.')
 
 dealAction = input()
 dealActionSet(dealAction)
-
