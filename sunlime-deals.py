@@ -3,23 +3,8 @@
 
 from pyrise import *
 
-# Who is responsible?
-def dealResponsibleSet:
-  dealResponsible = int(input())
-    if dealResponsible in range(1, 3):
-      if dealResponsible == 1:
-        deal.responsible_party_id = NicoleId
-
-      elif dealResponsible == 2:
-        deal.responsible_party_id = DominikId
-
-      elif dealResponsible == 3:
-        deal.responsible_party_id = ChristophId
-
-    else print('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
-      dealResponsibleSet
-
-
+# What do you wnat to do with your deal?
+# Set deal action
 def dealActionSet(dealAction):
   if dealAction == 0:
     deal = Deal()
@@ -33,8 +18,8 @@ def dealActionSet(dealAction):
     print('Enter \"1\" for Nicole Pfeiffer')
     print('Enter \"2\" for Dominik Fuchshofer')
     print('Enter \"3\" for Christoph Potzinger')
-
-
+    ç
+    dealResponsibleSet(dealResponsible)
 
   elif dealAction == 1:
     print ({dealAction})
@@ -42,7 +27,8 @@ def dealActionSet(dealAction):
   elif dealAction == 2:
     print ({dealAction})
 
-  elif dealAction == '':
+  elif dealAction == 3:
+    print ({dealAction})
 
   else:
     print('You haven\'t entered a correct number')
@@ -52,26 +38,44 @@ def dealActionSet(dealAction):
     print('Blank for quit.')
     dealAction = input()
 
+# Who is responsible?
+def dealResponsibleSet(dealResponsible):
+  if dealResponsible in range(1, 3):
+    if dealResponsible == 1:
+      deal.responsible_party_id = NicoleId
+
+    elif dealResponsible == 2:
+      deal.responsible_party_id = DominikId
+
+    elif dealResponsible == 3:
+      deal.responsible_party_id = ChristophId
+
+  else:
+    print ('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
+    
+
+# Set user IDs
 ChristophId = 60274790
 DominikId = 49290195
 NicoleId = 61332931
 
+# Set variables
 dealResponsible = 0
 dealId = 0
 dealAction = 0
-# 0 = new
+# 0 = add
 # 1 = update
 # 2 = delete
 
 Highrise.set_server('sunlime')
 Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
 
-print('What do you want to do with your deal?')
-print('Enter 0 for adding a deal.')
-print('Enter 1 for updating a deal.')
-print('Enter 2 for deleting a deal.')
-print('Blank for quit.')
+print ('What do you want to do with your deal?')
+print ('Enter 0 for adding a deal.')
+print ('Enter 1 for updating a deal.')
+print ('Enter 2 for deleting a deal.')
+print ('Blank for quit.')
 
 dealAction = input()
-dealActionSet
+dealActionSet(dealAction)
 
