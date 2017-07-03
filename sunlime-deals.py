@@ -3,22 +3,32 @@
 
 from pyrise import *
 
+# Set variables
+dealResponsible = 0
+dealId = 0
+dealAction = 0
+sunlimeId = 0
+
+# Set user IDs
+
+
 # What do you wnat to do with your deal?
 # Set deal action
 def dealActionSet(dealAction):
   if dealAction == 0:
     deal = Deal()
+    print('You are now adding a new deal.')
+    print('Next, give the deal a name: e.g. Angebot-105340: A good, descriptive Name')
+    dealName = raw_input()
 
-    print('Give the deal a name: e.g. Angebot-105340: A good, descriptive Name')
-    dealName = input()
+    deal.name = (dealName)
 
-    deal.name = strg(dealName)
+    print ('Thank you! The name of the deal is: {}').format(dealName)
 
     print('Who is responsible for the deal')
     print('Enter \"1\" for Nicole Pfeiffer')
     print('Enter \"2\" for Dominik Fuchshofer')
     print('Enter \"3\" for Christoph Potzinger')
-    ç
     dealResponsibleSet(dealResponsible)
 
   elif dealAction == 1:
@@ -40,24 +50,31 @@ def dealActionSet(dealAction):
 
 # Who is responsible?
 def dealResponsibleSet(dealResponsible):
+
+  christophId = 60274790
+  dominikId = 49290195
+  nicoleId = 61332931
+
+  deal = Deal()
+  dealResponsible = input()
+
   if dealResponsible in range(1, 3):
     if dealResponsible == 1:
-      deal.responsible_party_id = NicoleId
+      print ('You have entered {} and set Nicole as responsible for the deal').format(dealResponsible)
+      deal.responsible_party_id = nicoleId
+      print ('The highrise ID of Nicole is {}').format(deal.responsible_party_id)
+
 
     elif dealResponsible == 2:
-      deal.responsible_party_id = DominikId
+      deal.responsible_party_id = dominikId
 
     elif dealResponsible == 3:
-      deal.responsible_party_id = ChristophId
+      deal.responsible_party_id = christophId
 
   else:
     print ('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
-    
+    dealResponsibleSet(dealResponsible)
 
-# Set user IDs
-ChristophId = 60274790
-DominikId = 49290195
-NicoleId = 61332931
 
 # Set variables
 dealResponsible = 0
