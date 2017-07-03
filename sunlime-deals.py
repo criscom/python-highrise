@@ -3,24 +3,31 @@
 
 from pyrise import *
 
-# Set variables
+# Set highrise variables
+dealResponsible = 0
+dealId = 0
+dealAction = 0
+# 0 = add
+# 1 = update
+# 2 = delete
+
+# Set general variables
 dealResponsible = 0
 dealId = 0
 dealAction = 0
 sunlimeId = 0
 
-# Set user IDs
-
-
-# What do you wnat to do with your deal?
+# What do you wnat to do with your deal? function
 # Set deal action
 def dealActionSet(dealAction):
   if dealAction == 0:
     deal = Deal()
+
     print('You are now adding a new deal.')
     print('Next, give the deal a name: e.g. Angebot-105340: A good, descriptive Name')
-    dealName = raw_input()
 
+    # Set deal name
+    dealName = raw_input()
     deal.name = (dealName)
 
     print ('Thank you! The name of the deal is: {}').format(dealName)
@@ -29,6 +36,8 @@ def dealActionSet(dealAction):
     print('Enter \"1\" for Nicole Pfeiffer')
     print('Enter \"2\" for Dominik Fuchshofer')
     print('Enter \"3\" for Christoph Potzinger')
+
+    # Set responsible person
     dealResponsibleSet(dealResponsible)
 
   elif dealAction == 1:
@@ -48,14 +57,18 @@ def dealActionSet(dealAction):
     print('Blank for quit.')
     dealAction = input()
 
-# Who is responsible?
+# Who is responsible? function
+# Set responsible person
 def dealResponsibleSet(dealResponsible):
 
+  # Set user IDs
   christophId = 60274790
   dominikId = 49290195
   nicoleId = 61332931
 
   deal = Deal()
+
+  # Whos is responsible?
   dealResponsible = input()
 
   if dealResponsible in range(1, 3):
@@ -75,14 +88,6 @@ def dealResponsibleSet(dealResponsible):
     print ('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
     dealResponsibleSet(dealResponsible)
 
-
-# Set variables
-dealResponsible = 0
-dealId = 0
-dealAction = 0
-# 0 = add
-# 1 = update
-# 2 = delete
 
 Highrise.set_server('sunlime')
 Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
