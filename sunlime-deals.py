@@ -21,9 +21,9 @@ sunlimeId = 0
 
 # Set user IDs
 responsiblePartyId = 0
-christophId = 60274790
-dominikId = 49290195
-nicoleId = 61332931
+christophId = 1296386
+dominikId = 1296544
+nicoleId = 1296387
 
 # What do you wnat to do with your deal? function
 # Set deal action
@@ -52,7 +52,7 @@ def dealActionSet(dealAction):
     # Set responsible person
     responsiblePartyId = dealResponsibleSet(dealResponsible)
     print ('The ID is {}').format(responsiblePartyId)
-    deal.responsible_party_id = int(responsiblePartyId)
+    deal.responsible_party_id = responsiblePartyId
 
     # Deal background / description
     print('Give us some background for the deal')
@@ -109,7 +109,7 @@ def dealResponsibleSet(dealResponsible):
     if dealResponsible == 1:
       print ('You have entered {} and set Nicole as responsible for the deal').format(dealResponsible)
       responsiblePartyId = nicoleId
-      return int(responsiblePartyId)
+      return responsiblePartyId
       print ('The highrise ID of Nicole is {}').format(responsiblePartyId)
 
     elif dealResponsible == 2:
@@ -117,9 +117,9 @@ def dealResponsibleSet(dealResponsible):
 
     elif dealResponsible == 3:
       print ('You have entered {} and set Christoph as responsible for the deal').format(dealResponsible)
-      responsiblePartyId = 60274790 #christophId
+      responsiblePartyId = christophId
       print ('The highrise ID of Christoph is {}').format(responsiblePartyId)
-      return int(responsiblePartyId)
+      return responsiblePartyId
 
   else:
     print ('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
