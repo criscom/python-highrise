@@ -29,13 +29,16 @@ def dealActionSet(dealAction):
   if dealAction == 0:
 
     print('You are now adding a new deal.')
-    print('Next, give the deal a name: e.g. Angebot-105340: A good, descriptive Name')
+    print('Next, set the deal number: e.g 105340')
+    dealNumber = raw_input()
+
+    print('Next, give the deal a name: e.g. A good, descriptive Name')
 
     # Set deal name
     dealName = raw_input()
-    deal.name = (dealName)
+    deal.name = ('Angebot-{}: {}').format(dealNumber, dealName)
 
-    print ('Thank you! The name of the deal is: {}').format(dealName)
+    print ('Thank you! The id of the deal is: Angebot-{}: The name of the deal is: {}').format(dealNumber, dealName)
 
     print('Who is responsible for the deal')
     print('Enter \"1\" for Nicole Pfeiffer')
@@ -68,7 +71,7 @@ def dealActionSet(dealAction):
 # Set responsible person
 def dealResponsibleSet(dealResponsible):
 
-  # Whos is responsible?
+  # Who is responsible?
   dealResponsible = input()
 
   if dealResponsible in range(1, 3):
@@ -87,7 +90,6 @@ def dealResponsibleSet(dealResponsible):
   else:
     print ('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
     dealResponsibleSet(dealResponsible)
-
 
 Highrise.set_server('sunlime')
 Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
