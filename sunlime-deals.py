@@ -85,7 +85,6 @@ def dealActionSet(dealAction):
 
     # Continue with more actions
     # Doesn't work yet
-    dealInitialActionSet(dealInitialAction)
 
   elif dealAction == 3:
     print ({dealAction})
@@ -146,29 +145,34 @@ Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
 
 # What do you want to do? funtion
 # Set the deal action
-def dealInitialActionSet(dealInitialAction):
+def dealInitialActionSet():
   print ('What do you want to do with your deal?')
   print ('Enter 0 for adding a deal.')
   print ('Enter 1 for updating a deal.')
   print ('Enter 2 for deleting a deal.')
   print ('Blank for quit.')
 
-  dealInitialAction = input()
-  dealActionSet(dealAction)
+  dealAction = input()
+  return dealAction
 
-# Start of programm
-print ('What do you want to do with your deal?')
-print ('Enter 0 for adding a deal.')
-print ('Enter 1 for updating a deal.')
-print ('Enter 2 for deleting a deal.')
-print ('Blank for quit.')
+#Start of programm
+# print ('What do you want to do with your deal?')
+# print ('Enter 0 for adding a deal.')
+# print ('Enter 1 for updating a deal.')
+# print ('Enter 2 for deleting a deal.')
+# print ('Blank for quit.')
 
-dealAction = input()
+# dealAction = input()
 
 # deals = Deal.all()
 # for deal in deals:
 #  print ('deal name = ') + deal.name + (' ') + ('deal id = ') + str(deal.id) + (' ') + ('deal category id = ') + str(deal.category_id)
 
-# dealInitialActionSet(dealInitialAction)
-# dealInitialAction = dealAction
-dealActionSet(dealAction)
+#dealInitialActionSet()
+while True:
+  initialValue = dealInitialActionSet()
+  dealAction = dealActionSet(initialValue)
+  print('Quit program? Hit 0')
+  quit = input()
+  if quit == 0:
+    break
