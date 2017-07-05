@@ -18,6 +18,7 @@ dealResponsible = 0
 dealId = 0
 dealAction = 0
 sunlimeId = 0
+running = True
 
 # Set user IDs
 responsiblePartyId = 0
@@ -29,7 +30,9 @@ nicoleId = 1296387
 # Set deal action
 def dealActionSet(dealAction):
   deal = Deal()
+  ##################
   # Add deal
+  ##################
   if dealAction == 0:
 
     print('You are now adding a new deal.')
@@ -71,15 +74,26 @@ def dealActionSet(dealAction):
 
     deal.save()
 
+  ##################
   # Update deal
+  ##################
   elif dealAction == 1:
-    print ({dealAction})
-
-  # Delete deal
-  elif dealAction == 2:
-    print(' Give me the deal ID, please')
-    dealId = raw_input()
+    dealId = raw_input('Enter the deal ID, please : ')
     deal = Deal.get(dealId)
+    print ('You have chosen deal \"{}\" with ID {} ').format(deal.name, dealId)
+    print ('')
+    print ('What do you want to do?')
+    print ('Enter \"1\" to update the deal name')
+    print ('Enter \"2\" to add a note to the deal')
+    print ('Enter \"3\" to change the status of the deal')
+
+  ##################
+  # Delete deal
+  ##################
+  elif dealAction == 2:
+    dealId = raw_input('Enter the deal ID, please : ')
+    deal = Deal.get(dealId)
+    print ('You are deleting deal \"{}\" with ID {} ').format(deal.name, dealId)
     deal.delete()
     print('The deal with the ID {} has been deleted.').format(dealId)
 
@@ -112,7 +126,10 @@ def dealResponsibleSet(dealResponsible):
       print ('The highrise ID of Nicole is {}').format(responsiblePartyId)
 
     elif dealResponsible == 2:
+      print ('You have entered {} and set Dominik as responsible for the deal').format(dealResponsible)
       responsiblePartyId = dominikId
+      return responsiblePartyId
+      print ('The highrise ID of Dominik is {}').format(responsiblePartyId)
 
     elif dealResponsible == 3:
       print ('You have entered {} and set Christoph as responsible for the deal').format(dealResponsible)
@@ -169,10 +186,13 @@ def dealInitialActionSet():
 #  print ('deal name = ') + deal.name + (' ') + ('deal id = ') + str(deal.id) + (' ') + ('deal category id = ') + str(deal.category_id)
 
 #dealInitialActionSet()
-while True:
+while running:
   initialValue = dealInitialActionSet()
   dealAction = dealActionSet(initialValue)
-  print('Quit program? Hit 0')
-  quit = input()
-  if quit == 0:
-    break
+  quit = raw_input('Quit program? y for quit, n for continue : ')
+  if quit == 'y':
+    print ('Thank you for using my script! Have a good day!')
+  else:
+    print ('Let\'s continue')
+else:
+  print ('copyright by Sunlime Web Innovations GmbH, 2017')
