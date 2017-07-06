@@ -163,14 +163,17 @@ def dealCategorySet(dealCategory):
   print ('Enter 10 for: Magento Anpassung')
 
 
-# Import function connectToHighrise
-# Connect to Highrise
-
 #import connectToHighrise
 #connectToHighrise.connectToHighrise
 
+
+##################
+# Connect to Highrise
+##################
+
 Highrise.set_server('sunlime')
 Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
+
 
 # Import function dealInitialSet from file dealInitialActionSet.py
 from dealInitialActionSet import dealInitialActionSet
@@ -183,6 +186,9 @@ while running:
   quit = raw_input('Quit program? y for quit, n for continue : ')
   if quit == 'y':
     print ('Thank you for using my script! Have a good day!')
+    print ('copyright by Sunlime Web Innovations GmbH, 2017')
+    print ()
+    break
   else:
     print ('Let\'s continue')
 else:
