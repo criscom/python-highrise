@@ -165,10 +165,12 @@ def dealCategorySet(dealCategory):
 
 # Import function connectToHighrise
 # Connect to Highrise
-from connectToHighrise import connectToHighrise
-print connectToHighrise
 
+#import connectToHighrise
+#connectToHighrise.connectToHighrise
 
+Highrise.set_server('sunlime')
+Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
 
 # Import function dealInitialSet from file dealInitialActionSet.py
 from dealInitialActionSet import dealInitialActionSet
