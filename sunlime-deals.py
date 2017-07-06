@@ -162,16 +162,17 @@ def dealCategorySet(dealCategory):
   print ('Enter 9 for: PHP Programmierung')
   print ('Enter 10 for: Magento Anpassung')
 
-Highrise.set_server('sunlime')
-Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
+
+# Import function connectToHighrise
+# Connect to Highrise
+from connectToHighrise import connectToHighrise
+print connectToHighrise
+
+
 
 # Import function dealInitialSet from file dealInitialActionSet.py
 from dealInitialActionSet import dealInitialActionSet
 print dealInitialActionSet
-
-# deals = Deal.all()
-# for deal in deals:
-#  print ('deal name = ') + deal.name + (' ') + ('deal id = ') + str(deal.id) + (' ') + ('deal category id = ') + str(deal.category_id)
 
 #dealInitialActionSet()
 while running:
