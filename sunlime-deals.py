@@ -165,7 +165,9 @@ def dealCategorySet(dealCategory):
 Highrise.set_server('sunlime')
 Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
 
-from file dealInitialActionSet import dealInitialActionSet
+# Import function dealInitialSet from file dealInitialActionSet.py
+from dealInitialActionSet import dealInitialActionSet
+print dealInitialActionSet
 
 #Start of programm
 # print ('What do you want to do with your deal?')
