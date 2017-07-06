@@ -83,8 +83,13 @@ def dealActionSet(dealAction):
     print ('You have chosen deal \"{}\" with ID {} ').format(deal.name, dealId)
     print ('')
     print ('What do you want to do?')
+    # Update deal name
     print ('Enter \"1\" to update the deal name')
+
+    # Add note to deal
     print ('Enter \"2\" to add a note to the deal')
+
+    #
     print ('Enter \"3\" to change the status of the deal')
 
   ##################
@@ -160,17 +165,7 @@ def dealCategorySet(dealCategory):
 Highrise.set_server('sunlime')
 Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
 
-# What do you want to do? funtion
-# Set the deal action
-def dealInitialActionSet():
-  print ('What do you want to do with your deal?')
-  print ('Enter 0 for adding a deal.')
-  print ('Enter 1 for updating a deal.')
-  print ('Enter 2 for deleting a deal.')
-  print ('Blank for quit.')
-
-  dealAction = input()
-  return dealAction
+from file dealInitialActionSet import dealInitialActionSet
 
 #Start of programm
 # print ('What do you want to do with your deal?')
