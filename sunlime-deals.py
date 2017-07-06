@@ -169,15 +169,6 @@ Highrise.auth('4572ff2d6932dabc5e4a9e905b60ae45')
 from dealInitialActionSet import dealInitialActionSet
 print dealInitialActionSet
 
-#Start of programm
-# print ('What do you want to do with your deal?')
-# print ('Enter 0 for adding a deal.')
-# print ('Enter 1 for updating a deal.')
-# print ('Enter 2 for deleting a deal.')
-# print ('Blank for quit.')
-
-# dealAction = input()
-
 # deals = Deal.all()
 # for deal in deals:
 #  print ('deal name = ') + deal.name + (' ') + ('deal id = ') + str(deal.id) + (' ') + ('deal category id = ') + str(deal.category_id)
