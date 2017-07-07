@@ -1,7 +1,9 @@
 #! python 2
+# _*_ coding: latin-1 _*_
 # sunlime-deals.py - manage deals via api
 
 from pyrise import *
+import sys
 
 # Set highrise variables
 deal = Deal()
@@ -16,7 +18,7 @@ dealAction = 0
 # Set general variables
 dealResponsible = 0
 dealId = 0
-dealAction = 0
+dealUpdate = 0
 sunlimeId = 0
 running = True
 
@@ -43,6 +45,11 @@ def dealActionSet(dealAction):
 
     # Set deal name
     dealName = raw_input()
+    #type(dealName)
+    #dealName = dealName.encode('ascii', 'replace')
+    #dealName = dealName.decode('ascii', 'ignore') // strips out the umlaute
+    #dealName = u' '.join((dealName)).encode('utf-8')
+    #return dealName.encode('utf-8')
     deal.name = ('Angebot-{}: {}').format(dealNumber, dealName)
 
     print ('Thank you! The id of the deal is: Angebot-{}: The name of the deal is: {}').format(dealNumber, dealName)
@@ -82,15 +89,19 @@ def dealActionSet(dealAction):
     deal = Deal.get(dealId)
     print ('You have chosen deal \"{}\" with ID {} ').format(deal.name, dealId)
     print ('')
-    print ('What do you want to do?')
-    # Update deal name
-    print ('Enter \"1\" to update the deal name')
 
-    # Add note to deal
-    print ('Enter \"2\" to add a note to the deal')
+    dealUpdateAction = dealUpdateSet(dealUpdate)
+    if dealUpdateAction in range(1, 4):
+      if dealUpdateAction == 1:
+        print('Entering Deal update mode ...')
+        print('The current deal name is: {}').format(deal.name)
+        dealUpdateName = raw_input('Now, enter the new **name** for the deal : ')
+        deal.name = dealUpdateName
+        print('Updating deal name ...')
+        deal.save()
+        print ('The new **name** for the deal is not set to : {}').format(dealUpdateName)
+        print ('Exiting Deal update mode ...')
 
-    #
-    print ('Enter \"3\" to change the status of the deal')
 
   ##################
   # Delete deal
@@ -146,6 +157,21 @@ def dealResponsibleSet(dealResponsible):
     print ('Your selection cannot be assigned to one of the administrators. Please choose 1, 2 or 3')
     dealResponsibleSet(dealResponsible)
 
+# What update action do you want to perform? function
+# Deal update action
+
+def dealUpdateSet(dealUpdate):
+  print ('What do you want to update?')
+  # Update deal name
+  print ('Enter \"1\" to update the **deal name**')
+  # Add note to deal
+  print ('Enter \"2\" to add a **note** to the deal')
+  # Change the status
+  print ('Enter \"3\" to change the **status** of the deal')
+
+  dealUpdate = input()
+  return dealUpdate
+
 # What is the deal category? function
 # Set deal category
 
@@ -183,13 +209,12 @@ print dealInitialActionSet
 while running:
   initialValue = dealInitialActionSet()
   dealAction = dealActionSet(initialValue)
-  quit = raw_input('Quit program? y for quit, n for continue : ')
-  if quit == 'y':
+  quit = raw_input('Quit program? \'q\' for quit, \'c\' for continue : ')
+  if quit == 'q':
     print ('Thank you for using my script! Have a good day!')
-    print ('copyright by Sunlime Web Innovations GmbH, 2017')
-    print ()
+    print ('copyright Sunlime Web Innovations GmbH, 2017')
     break
   else:
     print ('Let\'s continue')
 else:
-  print ('copyright by Sunlime Web Innovations GmbH, 2017')
+  print ('copyright Sunlime Web Innovations GmbH, 2017')
