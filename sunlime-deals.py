@@ -84,6 +84,7 @@ def dealActionSet(dealAction):
   # Update deal
   ##################
   elif dealAction == 1:
+    deal = 0
     dealId = 0
     dealId = input('Enter the deal ID, please : ')
     # print (dealId)
@@ -119,6 +120,7 @@ def dealActionSet(dealAction):
         print ('Deleting deal ')
         deal.delete()
         print('The deal \'{}\' with the ID {} has been deleted.').format(dealName, dealId)
+        print ('Exiting Deal delete mode ...')
         break
       else:
         print('Let\'s start again...')
