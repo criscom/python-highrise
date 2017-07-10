@@ -3,12 +3,10 @@
 # sunlime-deals.py - manage deals via api
 
 from pyrise import *
-import sys
 
 # Set highrise variables
 deal = Deal()
 dealResponsible = 0
-dealId = 0
 dealInitialAction = 0
 dealAction = 0
 # 0 = add
@@ -31,6 +29,7 @@ nicoleId = 1296387
 # What do you wnat to do with your deal? function
 # Set deal action
 def dealActionSet(dealAction):
+  dealId = 0
   deal = Deal()
   ##################
   # Add deal
@@ -85,7 +84,9 @@ def dealActionSet(dealAction):
   # Update deal
   ##################
   elif dealAction == 1:
-    dealId = raw_input('Enter the deal ID, please : ')
+    dealId = 0
+    dealId = input('Enter the deal ID, please : ')
+    # print (dealId)
     deal = Deal.get(dealId)
     print ('You have chosen deal \"{}\" with ID {} ').format(deal.name, dealId)
     print ('')
@@ -99,7 +100,7 @@ def dealActionSet(dealAction):
         deal.name = dealUpdateName
         print('Updating deal name ...')
         deal.save()
-        print ('The new **name** for the deal is not set to : {}').format(dealUpdateName)
+        print ('The new **name** for the deal is now set to : {}').format(dealUpdateName)
         print ('Exiting Deal update mode ...')
 
 
@@ -107,11 +108,21 @@ def dealActionSet(dealAction):
   # Delete deal
   ##################
   elif dealAction == 2:
-    dealId = raw_input('Enter the deal ID, please : ')
-    deal = Deal.get(dealId)
-    print ('You are deleting deal \"{}\" with ID {} ').format(deal.name, dealId)
-    deal.delete()
-    print('The deal with the ID {} has been deleted.').format(dealId)
+    while True:
+      dealId = input('Enter the deal ID, please : ')
+      deal = Deal.get(dealId)
+      dealName = deal.name
+      print ('You are deleting deal \'{}\' with ID {} ').format(dealName, dealId)
+      #print ('Do you really want to delete deal %s? Press \'y\' to confirm deletion : ') % dealName
+      dealDeleteConfirmation = raw_input('Do you really want to delete the deal? Press \'y\' to confirm deletion. Press any other key to continue : ')
+      if dealDeleteConfirmation == 'y':
+        print ('Deleting deal ')
+        deal.delete()
+        print('The deal \'{}\' with the ID {} has been deleted.').format(dealName, dealId)
+        break
+      else:
+        print('Let\'s start again...')
+
 
     # Continue with more actions
     # Doesn't work yet
